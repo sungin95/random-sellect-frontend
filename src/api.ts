@@ -7,4 +7,7 @@ const instance = axios.create({
 });
 
 export const getMe = () =>
-  instance.get(`users/me`).then((response) => response.data);
+  instance.get(`questions/`).then((response) => response.data);
+
+export const getLists = () =>
+  instance.get(`questions/`).then((response) => response.data);
