@@ -7,7 +7,10 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function Home() {
   const { isLoading, data } = useQuery<IList[]>(["lists"], getLists);
-  const countSkeleton = [...Array(20)];
+  const countSkeleton = [];
+  for (let i = 1; i <= 20; i++) {
+    countSkeleton.push(i); // 리스트에 숫자 추가
+  }
   return (
     <VStack>
       {isLoading ? (

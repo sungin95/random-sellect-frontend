@@ -1,7 +1,6 @@
 export interface IUser {
   pk: number;
   username: string;
-  email: string;
 }
 
 interface IAuthon {
@@ -13,4 +12,9 @@ export interface IList {
   pk: number;
   description: string;
   authon: IAuthon;
+}
+
+export interface IUsernameLoginVariables {
+  username: string;
+  password: string;
 }
