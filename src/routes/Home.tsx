@@ -1,4 +1,4 @@
-import { Box, VStack } from "@chakra-ui/react";
+import { Box, Divider, HStack, Text, VStack } from "@chakra-ui/react";
 import { getLists } from "../api";
 import List from "../components/List";
 import { IList } from "../types";
@@ -23,12 +23,26 @@ export default function Home() {
         </>
       ) : null}
       <Box w={"50%"}>
+        <HStack justifyContent={"space-between"} m={5}>
+          <Text rounded="lg" width="60%" height={5} mb={1}>
+            내용
+          </Text>
+          <HStack width="25%" justifyContent={"space-between"}>
+            <Text rounded="lg" height={5}>
+              만든이
+            </Text>
+            <Text>카운트</Text>
+            <Box>버튼</Box>
+          </HStack>
+        </HStack>
+        <Divider />
         {data?.map((list) => (
           <List
             key={list.pk}
             pk={list.pk}
             description={list.description}
             authon={list.authon}
+            count={list.count}
           />
         ))}
       </Box>

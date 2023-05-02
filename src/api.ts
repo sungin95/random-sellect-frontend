@@ -63,3 +63,12 @@ export const uploadQuestion = (variables: IUploadQuestion) =>
       },
     })
     .then((response) => response.data);
+
+export const AddList = (pk: number) =>
+  instance
+    .post(`sellected-questions/${pk}`, null, {
+      headers: {
+        "X-CSRFToken": Cookie.get("csrftoken") || "",
+      },
+    })
+    .then((response) => response.data);

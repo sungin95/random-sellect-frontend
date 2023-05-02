@@ -12,6 +12,7 @@ export interface IList {
   pk: number;
   description: string;
   authon: IAuthon;
+  count: number;
 }
 
 export interface IUsernameLoginVariables {

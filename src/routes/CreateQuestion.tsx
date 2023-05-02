@@ -1,23 +1,18 @@
 import {
   Box,
   Button,
-  Checkbox,
   Container,
   FormControl,
   FormHelperText,
   FormLabel,
   Heading,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  Select,
   Text,
   Textarea,
   useToast,
   VStack,
 } from "@chakra-ui/react";
 import ProtectedPage from "../components/ProtectedPage";
-import { useMutation, useQueries, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { IUploadQuestion, IUploadQuestionCheck } from "../types";
