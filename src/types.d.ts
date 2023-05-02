@@ -23,3 +23,13 @@ export interface IUserSignUpVariables {
   username: string;
   password: string;
 }
+
+export interface IUploadQuestion {
+  description: string;
+}
+
+export interface IUploadQuestionCheck {
+  pk: number;
+  description: string;
+  authon: string;
+}

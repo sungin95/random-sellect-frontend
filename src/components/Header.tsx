@@ -1,4 +1,5 @@
-import { FaAirbnb, FaMoon, FaSun } from "react-icons/fa";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { BsPersonVcard } from "react-icons/bs";
 import {
   Box,
   Button,
@@ -86,7 +87,7 @@ export default function Header() {
     >
       <Box color={logoColor}>
         <Link to={"/"}>
-          <FaAirbnb size={"48"} />
+          <BsPersonVcard size={"48"} />
         </Link>
       </Box>
       <HStack spacing={2}>
@@ -119,6 +120,11 @@ export default function Header() {
                 ) : null} */}
                 <MenuItem onClick={onLogOut}>Log out</MenuItem>
               </MenuList>
+              <Link to={"/create-question"}>
+                <Button colorScheme={"red"} ml={5}>
+                  질문 만들기
+                </Button>
+              </Link>
             </Menu>
           )
         ) : null}

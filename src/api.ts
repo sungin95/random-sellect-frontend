@@ -1,6 +1,10 @@
 // import Cookie from "js-cookie";
 import axios from "axios";
-import { IUserSignUpVariables, IUsernameLoginVariables } from "./types";
+import {
+  IUploadQuestion,
+  IUserSignUpVariables,
+  IUsernameLoginVariables,
+} from "./types";
 import Cookie from "js-cookie";
 const instance = axios.create({
   baseURL: "http://127.0.0.1:8000/api/v1",
@@ -49,4 +53,13 @@ export const userSignUp = ({ username, password }: IUserSignUpVariables) =>
         },
       }
     )
+    .then((response) => response.data);
+
+export const uploadQuestion = (variables: IUploadQuestion) =>
+  instance
+    .post(`questions/`, variables, {
+      headers: {
+        "X-CSRFToken": Cookie.get("csrftoken") || "",
+      },
+    })
     .then((response) => response.data);

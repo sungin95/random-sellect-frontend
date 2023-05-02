@@ -3,6 +3,7 @@ import Root from "./components/Root";
 import Home from "./routes/Home";
 import NotFound from "./routes/NotFound";
 import MyList from "./routes/MyList";
+import CreateQuestion from "./routes/CreateQuestion";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "my-list",
         element: <MyList />,
+      },
+      {
+        path: "create-question",
+        element: <CreateQuestion />,
       },
     ],
   },
