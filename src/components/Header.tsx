@@ -38,7 +38,7 @@ export default function Header() {
     onOpen: onSignUpOpen,
   } = useDisclosure();
   const { toggleColorMode } = useColorMode();
-  const logoColor = useColorModeValue("red.500", "red.200");
+  const logoColor = useColorModeValue("red.500", "red.400");
   const Icon = useColorModeValue(FaMoon, FaSun);
   const toast = useToast();
   const queryClient = useQueryClient();
@@ -84,11 +84,19 @@ export default function Header() {
       }}
       borderBottomWidth={1}
     >
-      <Box color={logoColor}>
+      <HStack>
+        <Box mr={5} color={logoColor}>
+          <Link to={"/"}>
+            <BsPersonVcard size={"48"} />
+          </Link>
+        </Box>
         <Link to={"/"}>
-          <BsPersonVcard size={"48"} />
+          <Box>Home</Box>
         </Link>
-      </Box>
+        <Link to={"/my-list"}>
+          <Box>MyList</Box>
+        </Link>
+      </HStack>
       <HStack spacing={2}>
         <IconButton
           onClick={toggleColorMode}

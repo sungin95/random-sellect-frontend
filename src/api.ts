@@ -21,12 +21,8 @@ export const getLists = () =>
 export const getMyLists = () =>
   instance.get(`sellected-questions/`).then((response) => response.data);
 
-// export const getMyLists = ({ queryKey }: QueryFunctionContext) => {
-//   const [_, QuestionPk] = queryKey;
-//   return instance
-//     .get(`questions/${QuestionPk}/detail`)
-//     .then((response) => response.data);
-// };
+export const getMyListsStart = () =>
+  instance.get(`sellected-questions/start`).then((response) => response.data);
 
 export const usernameLogIn = ({
   username,
