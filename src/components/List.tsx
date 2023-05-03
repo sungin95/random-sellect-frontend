@@ -14,11 +14,13 @@ export default function List({ description, authon, count, pk }: IList) {
       });
     },
     onError: (error) => {
-      console.log("mutation has an error");
+      toast({
+        title: "이미 추가 되었습니다...",
+        status: "error",
+      });
     },
   });
   const handleClickAdd = (event: React.SyntheticEvent<HTMLButtonElement>) => {
-    // event.preventDefault();
     mutation.mutate(pk);
   };
   return (
@@ -30,9 +32,10 @@ export default function List({ description, authon, count, pk }: IList) {
         <Text rounded="lg" height={5}>
           {authon.username}
         </Text>
-        <HStack>
+        <HStack justifyContent={"space-between"}>
           <Text>{count}</Text>
-
+          <Text> </Text>
+          <Text> </Text>
           <Button onClick={handleClickAdd} colorScheme={"red"}>
             추가
           </Button>

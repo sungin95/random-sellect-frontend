@@ -32,7 +32,8 @@ export default function Home() {
               만든이
             </Text>
             <Text>카운트</Text>
-            <Box>버튼</Box>
+            <Box> </Box>
+            <Box> </Box>
           </HStack>
         </HStack>
         <Divider />
