@@ -68,7 +68,6 @@ export default function Header() {
   const onLogOut = async () => {
     mutation.mutate();
   };
-  console.log(isLoggedIn);
   return (
     <Stack
       justifyContent={"space-between"}

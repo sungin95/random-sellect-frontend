@@ -15,6 +15,12 @@ export interface IList {
   count: number;
 }
 
+export interface IListMyChoice {
+  pk: number;
+  description: string;
+  importance: number;
+}
+
 export interface IUsernameLoginVariables {
   username: string;
   password: string;
