@@ -10,22 +10,40 @@ import {
 } from "@chakra-ui/react";
 import { getMyListsStart } from "../api";
 import { IListMyChoice } from "../types";
-import ListSkeleton from "../components/ListSkeleton";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 export default function Start() {
-  const { isLoading, data } = useQuery<IListMyChoice>(
+  const navigate = useNavigate();
+  let storedDescription: string | null = null;
+  let storedPK: string | null = null;
+  const { data } = useQuery<IListMyChoice>(
     ["lists-my-choice-start"],
     getMyListsStart
   );
+  if (localStorage.getItem("description") === null) {
+    if (data !== undefined) {
+      localStorage.setItem("description", `${data.description}`);
+      localStorage.setItem("pk", `${data.pk}`);
+    }
+  }
+  const handleRestart = () => {
+    if (data?.description) {
+      localStorage.removeItem("description");
+      localStorage.removeItem("pk");
+      window.location.reload();
+    }
+  };
+  storedDescription = localStorage.getItem("description");
+  storedPK = localStorage.getItem("pk");
+
   const toast = useToast();
   const [text, setText] = useState("");
   let copyText = "";
   const handleCopyClipBoard = async () => {
     copyText =
       '면접 상황을 가정했을 때 "' +
-      `${data?.description}` +
+      `${storedDescription}` +
       '"라는 질문에 이렇게 답했어 "' +
       text +
       '" 피드백 해줘';
@@ -36,25 +54,18 @@ export default function Start() {
     });
     window.open("https://chat.openai.com/");
   };
-
   return (
     <VStack>
       <Box w={"50%"}>
         <HStack justifyContent={"center"} m={5}>
-          <Link to={"start"}>
-            <Button colorScheme="blue" fontSize={23}>
-              start
-            </Button>
-          </Link>
+          <Button colorScheme="blue" fontSize={23} onClick={handleRestart}>
+            start
+          </Button>
         </HStack>
         <HStack justifyContent={"space-between"} m={5}>
-          {isLoading ? (
-            <Text>loding...</Text>
-          ) : (
-            <Text rounded="lg" width="60%" height={5} mb={1}>
-              Q: {data?.description}
-            </Text>
-          )}
+          <Text rounded="lg" width="60%" height={5} mb={1}>
+            Q: {storedDescription}
+          </Text>
         </HStack>
         <Divider />
         <Box>

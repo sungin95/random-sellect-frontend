@@ -12,10 +12,12 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <QueryClientProvider client={client}>
-    <ChakraProvider theme={theme}>
-      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-      <RouterProvider router={router} />
-    </ChakraProvider>
-  </QueryClientProvider>
+  <React.StrictMode>
+    <QueryClientProvider client={client}>
+      <ChakraProvider theme={theme}>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+        <RouterProvider router={router} />
+      </ChakraProvider>
+    </QueryClientProvider>
+  </React.StrictMode>
 );

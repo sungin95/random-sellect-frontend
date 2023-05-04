@@ -28,7 +28,7 @@ export default function MyList() {
       ) : null}
       <Box w={"50%"}>
         <HStack justifyContent={"center"} m={5}>
-          <Link to={"start"}>
+          <Link to={"/my-list/start"}>
             <Button colorScheme="blue" fontSize={23}>
               start
             </Button>
