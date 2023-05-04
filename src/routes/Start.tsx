@@ -8,13 +8,12 @@ import {
   VStack,
   useToast,
 } from "@chakra-ui/react";
-import { getMyListsStart } from "../api";
+import { getMyListsStart, putMyListImportant } from "../api";
 import { IListMyChoice } from "../types";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 export default function Start() {
-  const navigate = useNavigate();
   let storedDescription: string | null = null;
   let storedPK: string | null = null;
   const { data } = useQuery<IListMyChoice>(
@@ -36,6 +35,15 @@ export default function Start() {
   };
   storedDescription = localStorage.getItem("description");
   storedPK = localStorage.getItem("pk");
+  // 알맞는 타입을 못찾겠다. e: any
+  const handleImportent = (e: any) => {
+    putMyListImportant([`${storedPK}`, e.target.value]);
+    toast({
+      title: "채점 되었습니다!",
+      status: "success",
+    });
+    handleRestart();
+  };
 
   const toast = useToast();
   const [text, setText] = useState("");
@@ -73,8 +81,20 @@ export default function Start() {
             value={text}
             onChange={(e) => setText(e.target.value)}
           ></Textarea>
-          <HStack justifyContent={"flex-end"}>
-            <Button mt={5} onClick={handleCopyClipBoard} colorScheme="blue">
+          <HStack justifyContent={"space-between"} mt={5}>
+            <HStack>
+              <Text>자체 채점 결과:</Text>
+              <Button colorScheme="red" onClick={handleImportent} value={-1}>
+                부족
+              </Button>
+              <Button colorScheme="blue" onClick={handleImportent} value={0}>
+                보통
+              </Button>
+              <Button colorScheme="green" onClick={handleImportent} value={1}>
+                잘함
+              </Button>
+            </HStack>
+            <Button onClick={handleCopyClipBoard} colorScheme="blue">
               복사
             </Button>
           </HStack>

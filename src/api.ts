@@ -6,7 +6,6 @@ import {
   IUsernameLoginVariables,
 } from "./types";
 import Cookie from "js-cookie";
-import { QueryFunctionContext } from "@tanstack/react-query";
 const instance = axios.create({
   baseURL: "http://127.0.0.1:8000/api/v1",
   withCredentials: true,
@@ -20,6 +19,20 @@ export const getLists = () =>
 
 export const getMyLists = () =>
   instance.get(`sellected-questions/`).then((response) => response.data);
+
+export const putMyListImportant = ([pk, data]: string[]) => {
+  instance
+    .put(
+      `sellected-questions/${pk}/detail`,
+      { importance: data },
+      {
+        headers: {
+          "X-CSRFToken": Cookie.get("csrftoken") || "",
+        },
+      }
+    )
+    .then((response) => response.data);
+};
 
 export const getMyListsStart = () =>
   instance.get(`sellected-questions/start`).then((response) => response.data);
