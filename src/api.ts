@@ -7,7 +7,7 @@ import {
 } from "./types";
 import Cookie from "js-cookie";
 const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/v1",
+  baseURL: "http://backend.gpt-is-interviewer.me/api/v1",
   withCredentials: true,
 });
 
