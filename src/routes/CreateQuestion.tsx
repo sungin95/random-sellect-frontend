@@ -63,7 +63,7 @@ export default function UploadRoom() {
               size="lg"
               w={"100%"}
             >
-              Upload Room
+              질문 올리기
             </Button>
           </VStack>
         </Container>

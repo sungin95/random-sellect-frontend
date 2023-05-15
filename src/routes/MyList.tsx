@@ -28,11 +28,13 @@ export default function MyList() {
       ) : null}
       <Box w={"50%"}>
         <HStack justifyContent={"center"} m={5}>
-          <Link to={"/my-list/start"}>
-            <Button colorScheme="blue" fontSize={23}>
-              start
-            </Button>
-          </Link>
+          <Box>
+            <Link to={"/my-list/start"}>
+              <Button colorScheme="blue" fontSize={23}>
+                면접 시작
+              </Button>
+            </Link>
+          </Box>
         </HStack>
         <HStack justifyContent={"space-between"} m={5}>
           <Text rounded="lg" width="60%" height={5} mb={1}>

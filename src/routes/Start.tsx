@@ -67,7 +67,7 @@ export default function Start() {
       <Box w={"50%"}>
         <HStack justifyContent={"center"} m={5}>
           <Button colorScheme="blue" fontSize={23} onClick={handleRestart}>
-            start
+            다시 시작
           </Button>
         </HStack>
         <HStack justifyContent={"space-between"} m={5}>
@@ -84,19 +84,24 @@ export default function Start() {
           <HStack justifyContent={"space-between"} mt={5}>
             <HStack>
               <Text>자체 채점 결과:</Text>
-              <Button colorScheme="red" onClick={handleImportent} value={-1}>
+              <Button colorScheme="red" onClick={handleImportent} value={1}>
                 부족
               </Button>
               <Button colorScheme="blue" onClick={handleImportent} value={0}>
                 보통
               </Button>
-              <Button colorScheme="green" onClick={handleImportent} value={1}>
+              <Button colorScheme="green" onClick={handleImportent} value={-1}>
                 잘함
               </Button>
             </HStack>
-            <Button onClick={handleCopyClipBoard} colorScheme="blue">
-              복사
-            </Button>
+            <Box>
+              <Button onClick={handleCopyClipBoard} colorScheme="blue">
+                ChatGPT로 이동
+              </Button>
+              <Text>
+                이동후 붙여넣기만<br></br> 하시면 됩니다.
+              </Text>
+            </Box>
           </HStack>
         </Box>
       </Box>
