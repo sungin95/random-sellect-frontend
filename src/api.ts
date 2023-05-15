@@ -6,8 +6,12 @@ import {
   IUsernameLoginVariables,
 } from "./types";
 import Cookie from "js-cookie";
+
 const instance = axios.create({
-  baseURL: "https://backend.gpt-is-interviewer.me/api/v1",
+  baseURL:
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:8000/api/v1/"
+      : "https://backend.gpt-is-interviewer.me/api/v1",
   withCredentials: true,
 });
 
