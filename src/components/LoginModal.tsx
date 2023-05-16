@@ -117,9 +117,8 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             colorScheme={"red"}
             w={"100%"}
           >
-            Log in
+            로그인
           </Button>
-          <SocialLogin />
         </ModalBody>
       </ModalContent>
     </Modal>

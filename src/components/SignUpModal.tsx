@@ -105,9 +105,8 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
             colorScheme={"red"}
             w={"100%"}
           >
-            Sign up
+            회원가입
           </Button>
-          <SocialLogin />
         </ModalBody>
       </ModalContent>
     </Modal>

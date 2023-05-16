@@ -91,10 +91,13 @@ export default function Header() {
           </Link>
         </Box>
         <Link to={"/"}>
-          <Box>Home</Box>
+          <Box ml={1}>질문</Box>
         </Link>
         <Link to={"/my-list"}>
-          <Box>MyList</Box>
+          <Box mx={3}>내질문</Box>
+        </Link>
+        <Link to={"/my-list/start"}>
+          <Box>면접 시작</Box>
         </Link>
       </HStack>
       <HStack spacing={2}>
@@ -107,10 +110,10 @@ export default function Header() {
         {!userLoading ? (
           !isLoggedIn ? (
             <>
-              <Button onClick={onLoginOpen}>Log in</Button>
+              <Button onClick={onLoginOpen}>로그인</Button>
               <LightMode>
                 <Button onClick={onSignUpOpen} colorScheme={"red"}>
-                  Sign up
+                  회원가입
                 </Button>
               </LightMode>
             </>
