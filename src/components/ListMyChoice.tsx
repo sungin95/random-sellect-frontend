@@ -3,7 +3,6 @@ import React from "react";
 import { IListMyChoice } from "../types";
 import { useMutation } from "@tanstack/react-query";
 import { DeleteList } from "../api";
-import { useParams } from "react-router-dom";
 
 export default function ListMyChoice({
   description,

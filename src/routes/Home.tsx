@@ -4,6 +4,7 @@ import List from "../components/List";
 import { IList } from "../types";
 import ListSkeleton from "../components/ListSkeleton";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 
 export default function Home() {
   const { isLoading, data } = useQuery<IList[]>(["lists"], getLists);
@@ -13,6 +14,9 @@ export default function Home() {
   }
   return (
     <VStack>
+      <Helmet>
+        <title>ChatGPT를 활용 개발자가 되기</title>
+      </Helmet>
       {isLoading ? (
         <>
           <Box w={"50%"}>

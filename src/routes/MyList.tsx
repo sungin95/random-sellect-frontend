@@ -4,8 +4,9 @@ import { IListMyChoice } from "../types";
 import ListSkeleton from "../components/ListSkeleton";
 import { useQuery } from "@tanstack/react-query";
 import ListMyChoice from "../components/ListMyChoice";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ProtectedPage from "../components/ProtectedPage";
+import { Helmet } from "react-helmet";
 
 export default function MyList() {
   const { isLoading, data } = useQuery<IListMyChoice[]>(
@@ -18,6 +19,9 @@ export default function MyList() {
   }
   return (
     <ProtectedPage>
+      <Helmet>
+        <title>면접 질문</title>
+      </Helmet>
       <VStack>
         {isLoading ? (
           <>

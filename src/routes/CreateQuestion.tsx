@@ -17,6 +17,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { IUploadQuestion, IUploadQuestionCheck } from "../types";
 import { uploadQuestion } from "../api";
+import { Helmet } from "react-helmet";
 
 export default function UploadRoom() {
   const { register, handleSubmit } = useForm<IUploadQuestion>();
@@ -37,6 +38,9 @@ export default function UploadRoom() {
   };
   return (
     <ProtectedPage>
+      <Helmet>
+        <title>면접 질문 만들기</title>
+      </Helmet>
       <Box pb={40} mt={10} px={{ base: 10, lg: 40 }}>
         <Container>
           <Heading textAlign={"center"}>질문 만들기</Heading>

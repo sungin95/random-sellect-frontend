@@ -10,9 +10,10 @@ import {
 } from "@chakra-ui/react";
 import { getMyListsStart, putMyListImportant } from "../api";
 import { IListMyChoice } from "../types";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import ProtectedPage from "../components/ProtectedPage";
+import { Helmet } from "react-helmet";
 
 export default function Start() {
   let storedDescription: string | null = null;
@@ -65,6 +66,9 @@ export default function Start() {
   };
   return (
     <ProtectedPage>
+      <Helmet>
+        <title>면접 시작</title>
+      </Helmet>
       <VStack>
         <Box w={"50%"}>
           <HStack justifyContent={"center"} m={5}>
