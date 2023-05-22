@@ -1,3 +1,4 @@
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { BsPersonVcard } from "react-icons/bs";
 import {
@@ -12,6 +13,7 @@ import {
   MenuList,
   Stack,
   ToastId,
+  VStack,
   useColorMode,
   useColorModeValue,
   useDisclosure,
@@ -64,6 +66,11 @@ export default function Header() {
       }
     },
   });
+  const handleInstructions = () => {
+    window.open(
+      "https://github.com/sungin95/random-sellect-backend/blob/master/%EB%AC%B8%EC%84%9C/%EC%82%AC%EC%9A%A9%EB%B2%95.md"
+    );
+  };
 
   const onLogOut = async () => {
     mutation.mutate();
@@ -118,21 +125,33 @@ export default function Header() {
               </LightMode>
             </>
           ) : (
-            <Menu>
-              <MenuButton>
-                <Box>{user?.username}</Box>
-              </MenuButton>
-              <MenuList>
-                <MenuItem onClick={onLogOut}>Log out</MenuItem>
-              </MenuList>
+            <Box>
+              <Menu>
+                <MenuButton>
+                  <Box>{user?.username}</Box>
+                </MenuButton>
+                <MenuList>
+                  <MenuItem onClick={onLogOut}>Log out</MenuItem>
+                </MenuList>
+              </Menu>
               <Link to={"/create-question"}>
                 <Button colorScheme={"red"} ml={5}>
                   질문 만들기
                 </Button>
               </Link>
-            </Menu>
+            </Box>
           )
         ) : null}
+        <Menu>
+          <MenuButton>
+            <HStack>
+              <AiOutlineExclamationCircle size={"48"} color="skyblue" />
+            </HStack>
+          </MenuButton>
+          <MenuList>
+            <MenuItem onClick={handleInstructions}>사용법</MenuItem>
+          </MenuList>
+        </Menu>
       </HStack>
       <LoginModal isOpen={isLoginOpen} onClose={onLoginClose} />
       <SignUpModal isOpen={isSignUpOpen} onClose={onSignUpClose} />
