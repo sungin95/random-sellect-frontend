@@ -123,11 +123,6 @@ export default function Header() {
                 <Box>{user?.username}</Box>
               </MenuButton>
               <MenuList>
-                {/* {user?.is_host ? (
-                  <Link to="/rooms/upload">
-                    <MenuItem>Upload room</MenuItem>
-                  </Link>
-                ) : null} */}
                 <MenuItem onClick={onLogOut}>Log out</MenuItem>
               </MenuList>
               <Link to={"/create-question"}>
