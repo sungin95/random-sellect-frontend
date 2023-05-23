@@ -74,7 +74,7 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
                   required: "아이디를 입력해 주세요",
                 })}
                 variant={"filled"}
-                placeholder="Username"
+                placeholder="아이디"
               />
             </InputGroup>
             <InputGroup>
@@ -90,10 +90,10 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
                 required
                 type="password"
                 {...register("password", {
-                  required: "Please write a password",
+                  required: "비밀번호를 적어주세요",
                 })}
                 variant={"filled"}
-                placeholder="password"
+                placeholder="비밀번호"
               />
             </InputGroup>
           </VStack>
