@@ -62,7 +62,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     <Modal onClose={onClose} isOpen={isOpen}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Log in </ModalHeader>
+        <ModalHeader>로그인</ModalHeader>
         <ModalCloseButton />
         <ModalBody as={"form"} onSubmit={handleSubmit(onSubmit)}>
           <VStack>

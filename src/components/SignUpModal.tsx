@@ -55,7 +55,7 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
     <Modal onClose={onClose} isOpen={isOpen}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Sign up</ModalHeader>
+        <ModalHeader>회원가입</ModalHeader>
         <ModalCloseButton />
         <ModalBody as={"form"} onSubmit={handleSubmit(onSubmit)}>
           <VStack>
