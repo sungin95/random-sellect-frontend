@@ -35,7 +35,6 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
   const queryClient = useQueryClient();
   const mutation = useMutation(userSignUp, {
     onSuccess: (data) => {
-      console.log(data);
       toast({
         title: "welcome back!",
         status: "success",
