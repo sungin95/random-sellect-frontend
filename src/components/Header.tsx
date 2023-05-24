@@ -25,9 +25,16 @@ import SignUpModal from "./SignUpModal";
 import useUser from "../lib/useUser";
 import { logOut } from "../api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useCookies } from "react-cookie";
+import Cookie from "js-cookie";
+import FirstModal from "./FirstModal";
 
 export default function Header() {
+  const [cookies, setCookie] = useCookies(["isFirst"]);
+  if (Cookie.get("isFirst") === undefined) {
+    setCookie("isFirst", "false", { path: "/" });
+  }
   const { userLoading, isLoggedIn, user } = useUser();
   const {
     isOpen: isLoginOpen,
@@ -39,12 +46,21 @@ export default function Header() {
     onClose: onSignUpClose,
     onOpen: onSignUpOpen,
   } = useDisclosure();
+  const {
+    isOpen: isFirstModalOpen,
+    onClose: onFirstModalClose,
+    onOpen: onFirstModalOpen,
+  } = useDisclosure();
+  useEffect(() => {
+    if (Cookie.get("isFirst") === "false") {
+      onFirstModalOpen();
+    }
+  }, ["first"]);
   const { toggleColorMode } = useColorMode();
   const logoColor = useColorModeValue("red.500", "red.400");
   const Icon = useColorModeValue(FaMoon, FaSun);
   const toast = useToast();
   const queryClient = useQueryClient();
-  // useRef는 state에 넣고 싶지 않은 value를 저장할 때 사용해
   const toastId = useRef<ToastId>();
   const mutation = useMutation(logOut, {
     onMutate: () => {
@@ -155,6 +171,7 @@ export default function Header() {
       </HStack>
       <LoginModal isOpen={isLoginOpen} onClose={onLoginClose} />
       <SignUpModal isOpen={isSignUpOpen} onClose={onSignUpClose} />
+      <FirstModal isOpen={isFirstModalOpen} onClose={onFirstModalClose} />
     </Stack>
   );
 }
