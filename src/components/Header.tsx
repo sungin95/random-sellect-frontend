@@ -68,7 +68,7 @@ export default function Header() {
   });
   const handleInstructions = () => {
     window.open(
-      "https://github.com/sungin95/random-sellect-backend/blob/master/%EB%AC%B8%EC%84%9C/%EC%82%AC%EC%9A%A9%EB%B2%95.md"
+      "https://github.com/sungin95/random-question-document/blob/master/%EB%9E%9C%EB%8D%A4%EC%A7%88%EB%AC%B8%20%EB%AC%B8%EC%84%9C/%EC%82%AC%EC%9A%A9%EB%B2%95.md"
     );
   };
 
