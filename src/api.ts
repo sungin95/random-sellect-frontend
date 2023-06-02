@@ -21,8 +21,14 @@ export const getMe = () =>
 export const getLists = () =>
   instance.get(`questions/`).then((response) => response.data);
 
+export const getTotalListsCount = () =>
+  instance.get(`questions/total`).then((response) => response.data);
+
 export const getMyLists = () =>
   instance.get(`questions/sellected/`).then((response) => response.data);
+
+export const getTotalMyListsCount = () =>
+  instance.get(`questions/sellected/total`).then((response) => response.data);
 
 export const putMyListImportant = ([pk, data]: string[]) => {
   instance

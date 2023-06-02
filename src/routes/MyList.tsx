@@ -1,5 +1,5 @@
 import { Box, Button, Divider, HStack, Text, VStack } from "@chakra-ui/react";
-import { getMyLists } from "../api";
+import { getMyLists, getTotalMyListsCount } from "../api";
 import { IListMyChoice } from "../types";
 import ListSkeleton from "../components/ListSkeleton";
 import { useQuery } from "@tanstack/react-query";
@@ -12,6 +12,10 @@ export default function MyList() {
   const { isLoading, data } = useQuery<IListMyChoice[]>(
     ["lists-my-choice"],
     getMyLists
+  );
+  const { data: total_mylists_count } = useQuery<number>(
+    ["lists-my-choice-total-count"],
+    getTotalMyListsCount
   );
   const countSkeleton = [];
   for (let i = 1; i <= 20; i++) {

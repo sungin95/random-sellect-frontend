@@ -1,5 +1,5 @@
 import { Box, Divider, HStack, Text, VStack } from "@chakra-ui/react";
-import { getLists } from "../api";
+import { getLists, getTotalListsCount } from "../api";
 import List from "../components/List";
 import { IList } from "../types";
 import ListSkeleton from "../components/ListSkeleton";
@@ -8,6 +8,10 @@ import { Helmet } from "react-helmet";
 
 export default function Home() {
   const { isLoading, data } = useQuery<IList[]>(["lists"], getLists);
+  const { data: total_lists_count } = useQuery<number>(
+    ["total_lists_count"],
+    getTotalListsCount
+  );
   const countSkeleton = [];
   for (let i = 1; i <= 20; i++) {
     countSkeleton.push(i); // 리스트에 숫자 추가
