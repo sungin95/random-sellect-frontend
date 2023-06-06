@@ -40,3 +40,7 @@ export interface IUploadQuestionCheck {
   description: string;
   authon: string;
 }
+
+export interface IPageNation {
+  total: number;
+}
