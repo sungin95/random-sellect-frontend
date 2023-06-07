@@ -66,7 +66,7 @@ export default function Home() {
       </Box>
       {total_lists_count &&
         total_lists_count.map((total) => (
-          <Pagination key={total} total={total} />
+          <Pagination key={total} total={total} url={"/"} />
         ))}
     </VStack>
   );

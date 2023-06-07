@@ -17,12 +17,12 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "my-list",
-        element: <MyList />,
-      },
-      {
         path: "my-list/start",
         element: <Start />,
+      },
+      {
+        path: "my-list/:page",
+        element: <MyList />,
       },
       {
         path: "create-question",

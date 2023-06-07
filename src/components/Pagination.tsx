@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { AddList } from "../api";
 import { Link } from "react-router-dom";
 
-export default function Pagination({ total }: IPaginNation) {
+export default function Pagination({ total, url }: IPaginNation) {
   const [page, setPage] = useState(1);
   const numPages = Math.ceil(total / 10);
   const pageArray = [];
@@ -15,19 +15,14 @@ export default function Pagination({ total }: IPaginNation) {
   return (
     <>
       <HStack>
-        <Link to={`/${page - 1}`}>
-          <Button
-            type="submit"
-            onClick={() => setPage(page - 1)}
-            hidden={page === 1}
-          >
+        <Link to={`${url}${page - 1}`}>
+          <Button onClick={() => setPage(page - 1)} hidden={page === 1}>
             &lt;
           </Button>
         </Link>
         {pageArray.map((i) => (
-          <Link to={`/${i}`}>
+          <Link to={`${url}${i}`}>
             <Button
-              type="submit"
               key={i}
               onClick={() => setPage(i)}
               aria-current={page === i}
@@ -36,12 +31,8 @@ export default function Pagination({ total }: IPaginNation) {
             </Button>
           </Link>
         ))}
-        <Link to={`/${page + 1}`}>
-          <Button
-            type="submit"
-            onClick={() => setPage(page + 1)}
-            hidden={page === numPages}
-          >
+        <Link to={`${url}${page + 1}`}>
+          <Button onClick={() => setPage(page + 1)} hidden={page === numPages}>
             &gt;
           </Button>
         </Link>

@@ -4,16 +4,18 @@ import { IListMyChoice } from "../types";
 import ListSkeleton from "../components/ListSkeleton";
 import { useQuery } from "@tanstack/react-query";
 import ListMyChoice from "../components/ListMyChoice";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProtectedPage from "../components/ProtectedPage";
 import { Helmet } from "react-helmet";
+import Pagination from "../components/Pagination";
 
 export default function MyList() {
+  const { page } = useParams();
   const { isLoading, data } = useQuery<IListMyChoice[]>(
-    ["lists-my-choice"],
+    ["lists-my-choice", page],
     getMyLists
   );
-  const { data: total_mylists_count } = useQuery<number>(
+  const { data: total_mylists_count } = useQuery<number[]>(
     ["lists-my-choice-total-count"],
     getTotalMyListsCount
   );
@@ -64,6 +66,10 @@ export default function MyList() {
             />
           ))}
         </Box>
+        {total_mylists_count &&
+          total_mylists_count.map((total) => (
+            <Pagination key={total} total={total} url={"/my-list/"} />
+          ))}
       </VStack>
     </ProtectedPage>
   );

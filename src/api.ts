@@ -26,8 +26,12 @@ export const getLists = ({ queryKey }: QueryFunctionContext) => {
 export const getTotalListsCount = () =>
   instance.get(`questions/total`).then((response) => response.data);
 
-export const getMyLists = () =>
-  instance.get(`questions/sellected/`).then((response) => response.data);
+export const getMyLists = ({ queryKey }: QueryFunctionContext) => {
+  const [_, page] = queryKey;
+  return instance
+    .get(`questions/sellected/page/${page}`)
+    .then((response) => response.data);
+};
 
 export const getTotalMyListsCount = () =>
   instance.get(`questions/sellected/total`).then((response) => response.data);

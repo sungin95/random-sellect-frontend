@@ -43,4 +43,5 @@ export interface IUploadQuestionCheck {
 
 export interface IPaginNation {
   total: number;
+  url: string;
 }

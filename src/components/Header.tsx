@@ -29,7 +29,7 @@ import { useEffect, useRef } from "react";
 import { useCookies } from "react-cookie";
 import Cookie from "js-cookie";
 import FirstModal from "./FirstModal";
-import { start_page } from "../constants";
+import { start_my_page, start_page } from "../constants";
 
 export default function Header() {
   const [cookies, setCookie] = useCookies(["isFirst"]);
@@ -117,7 +117,7 @@ export default function Header() {
         <Link to={start_page}>
           <Box ml={1}>질문</Box>
         </Link>
-        <Link to={"/my-list"}>
+        <Link to={start_my_page}>
           <Box mx={3}>내질문</Box>
         </Link>
         <Link to={"/my-list/start"}>
