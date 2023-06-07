@@ -28,6 +28,10 @@ const router = createBrowserRouter([
         path: "create-question",
         element: <CreateQuestion />,
       },
+      {
+        path: ":page",
+        element: <Home />,
+      },
     ],
   },
 ]);

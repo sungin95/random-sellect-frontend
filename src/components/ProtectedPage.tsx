@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useUser from "../lib/useUser";
 import { useToast } from "@chakra-ui/react";
+import { start_page } from "../constants";
 
 interface IProtectedPaeProps {
   children: React.ReactNode;
@@ -18,7 +19,7 @@ export default function ProtectedPage({ children }: IProtectedPaeProps) {
           title: "로그인을 해 주세요!",
           status: "error",
         });
-        navigate("/");
+        navigate(start_page);
       }
     }
   }, [userLoading, isLoggedIn, navigate]);

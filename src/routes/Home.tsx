@@ -5,12 +5,19 @@ import { IList } from "../types";
 import ListSkeleton from "../components/ListSkeleton";
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
-import PageNation from "../components/PageNation";
+import Pagination from "../components/Pagination";
+import { useNavigate, useParams } from "react-router-dom";
+import { start_page } from "../constants";
 
 export default function Home() {
-  const { isLoading, data } = useQuery<IList[]>(["lists"], getLists);
+  const navigate = useNavigate();
+  const { page } = useParams();
+  if (page === undefined) {
+    navigate(start_page);
+  }
+  const { isLoading, data } = useQuery<IList[]>(["lists", page], getLists);
   const { data: total_lists_count } = useQuery<number[]>(
-    ["total_lists_count"],
+    [`total_lists_count`],
     getTotalListsCount
   );
 
@@ -59,7 +66,7 @@ export default function Home() {
       </Box>
       {total_lists_count &&
         total_lists_count.map((total) => (
-          <PageNation key={total} total={total} />
+          <Pagination key={total} total={total} />
         ))}
     </VStack>
   );

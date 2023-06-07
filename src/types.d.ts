@@ -41,6 +41,6 @@ export interface IUploadQuestionCheck {
   authon: string;
 }
 
-export interface IPageNation {
+export interface IPaginNation {
   total: number;
 }

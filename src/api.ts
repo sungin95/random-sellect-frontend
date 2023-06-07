@@ -6,6 +6,7 @@ import {
   IUsernameLoginVariables,
 } from "./types";
 import Cookie from "js-cookie";
+import { QueryFunctionContext } from "@tanstack/react-query";
 
 const instance = axios.create({
   baseURL:
@@ -18,9 +19,10 @@ const instance = axios.create({
 export const getMe = () =>
   instance.get(`users/me`).then((response) => response.data);
 
-export const getLists = () =>
-  instance.get(`questions/`).then((response) => response.data);
-
+export const getLists = ({ queryKey }: QueryFunctionContext) => {
+  const [_, page] = queryKey;
+  return instance.get(`questions/${page}`).then((response) => response.data);
+};
 export const getTotalListsCount = () =>
   instance.get(`questions/total`).then((response) => response.data);
 
