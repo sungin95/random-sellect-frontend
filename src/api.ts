@@ -93,7 +93,7 @@ export const userSignUp = ({ username, password }: IUserSignUpVariables) =>
 
 export const uploadQuestion = (variables: IUploadQuestion) =>
   instance
-    .post(`questions/`, variables, {
+    .post(`questions/create`, variables, {
       headers: {
         "X-CSRFToken": Cookie.get("csrftoken") || "",
       },

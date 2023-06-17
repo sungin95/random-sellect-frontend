@@ -30,7 +30,7 @@ export default function UploadRoom() {
         title: "Room created",
         position: "bottom-right",
       });
-      navigate(`/my-list`);
+      navigate(`/my-list/1`);
     },
   });
   const onSubmit = (data: IUploadQuestion) => {
