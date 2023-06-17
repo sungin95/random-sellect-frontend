@@ -27,7 +27,7 @@ export default function UploadRoom() {
     onSuccess: (data: IUploadQuestionCheck) => {
       toast({
         status: "success",
-        title: "Room created",
+        title: "Questhion created",
         position: "bottom-right",
       });
       navigate(`/my-list/1`);
