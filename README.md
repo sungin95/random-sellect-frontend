@@ -1,3 +1,5 @@
+백엔드 링크: https://github.com/sungin95/random-sellect-backend
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
