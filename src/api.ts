@@ -59,7 +59,7 @@ export const usernameLogIn = ({
 }: IUsernameLoginVariables) =>
   instance
     .post(
-      `/users/log-in`,
+      `/users/login`,
       { username, password },
       {
         headers: {
@@ -71,7 +71,7 @@ export const usernameLogIn = ({
 
 export const logOut = () =>
   instance
-    .post(`users/log-out`, null, {
+    .post(`users/logout`, null, {
       headers: {
         "X-CSRFToken": Cookie.get("csrftoken") || "",
       },
@@ -81,7 +81,7 @@ export const logOut = () =>
 export const userSignUp = ({ username, password }: IUserSignUpVariables) =>
   instance
     .post(
-      `/users/user-create`,
+      `/users/signup`,
       { username, password },
       {
         headers: {
