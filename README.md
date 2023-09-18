@@ -1,4 +1,5 @@
 백엔드 링크: https://github.com/sungin95/random-sellect-backend
+배포된 페이지: https://www.gpt-is-interviewer.me/1
 
 # Getting Started with Create React App
 
